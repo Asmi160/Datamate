@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Deleted</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 36px;
+    }
+
+    p {
+      color: #666;
+      font-size: 18px;
+    }
+
+    .success-message {
+      display: none;
+      color: #5cb85c;
+      font-weight: bold;
+      font-size: 24px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Your account deleted successfully</h1>
+    <p>Thank you for using our service.</p>
+    <div class="success-message" id="successMessage">Account Deleted!</div>
+  </div>
+
+  <script>
+    // Function to show success message with animation
+    function showSuccessMessage() {
+      var successMessage = document.getElementById('successMessage');
+      successMessage.style.display = 'block';
+    }
+
+    // Call the showSuccessMessage function after 3 seconds
+    setTimeout(showSuccessMessage, 3000);
+  </script>
+</body>
+</html>

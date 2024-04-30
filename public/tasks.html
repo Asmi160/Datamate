@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks Page</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <style>
+    /* Global text color for dark text throughout the page */
+    body,
+    .container,
+    h1,
+    p,
+    .task-card,
+    .task-title,
+    .task-details,
+    .label,
+    .btn,
+    .form-control {
+      color: white; /* Dark gray for text */
+    }
+
+    /* Background image */
+    body {
+      background-image: url("5.jpg"); /* Replace with your background image path */
+      background-size: cover;
+      background-position: center;
+      height: 2500px;
+      font-family: sans-serif;
+    }
+
+    /* Container layout and padding */
+    .container {
+      padding-top: 70px; /* Adjust padding as needed */
+      text-align: center;
+    }
+
+    /* Task card styles */
+    .task-card {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 20px; /* Increase margin between task cards */
+    }
+
+    .task-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .task-details {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .label {
+      flex: 1 1 auto; /* Allow labels to grow but not shrink */
+      text-align: left; /* Align text to the left */
+      margin-right: 10px; /* Adjust spacing between labels */
+    }
+
+    /* Progress bar styles */
+    .progress-bar {
+      width: 100%;
+      height: 20px; /* Increase height for better visibility */
+      background-color: #f5f5f5; /* Light gray background */
+      border-radius: 10px; /* Rounded corners */
+      overflow: hidden; /* Ensure progress bar doesn't exceed container */
+      margin-top: 5px; /* Adjust spacing */
+    }
+
+    .progress-bar-filled {
+      background-color: rgb(48, 205, 74); /* Green for progress */
+      height: 100%; /* Fills the entire height of the progress bar */
+      transition: width 0.5s ease; /* Smooth transition */
+    }
+
+    /* Adjust text color for progress labels */
+    .progress-label {
+      color: black; /* Black text for better contrast */
+      font-size: 14px; /* Adjust font size */
+      margin-top: 3px; /* Adjust spacing */
+    }
+
+    /* Add task form styling and visibility toggle */
+    #add-task-form {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #add-task-btn.active {
+      background-color: #7eb68b; /* Green for active add button */
+      border-color: #727b74;
+    }
+    
+    .link{
+      color: wheat;
+    }
+
+    .link:hover {
+      color: whitesmoke;
+    }
+
+    /* Square card styles */
+    .square-card {
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      padding: 20px;
+      border-radius: 5px;
+      margin-bottom: 20px; /* Increase margin between square cards */
+    }
+
+    /* Progress bar in square card styles */
+    .progress-bar-square {
+      width: 100%;
+      background-color: #f5f5f5; /* Light gray background */
+      border-radius: 10px; /* Rounded corners */
+      overflow: hidden; /* Ensure progress bar doesn't exceed container */
+      margin-top: 10px; /* Adjust spacing */
+    }
+
+    .progress-bar-filled-square {
+      background-color: rgb(48, 205, 74); /* Green for progress */
+      width: 0%; /* Initial width set to 0 */
+      height: 20px; /* Increase height for better visibility */
+      transition: width 0.5s ease; /* Smooth transition */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="link row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <a class="link navbar-brand" href="1.html">Home</a>
+        <a class="link navbar-brand" href="tasks.html">Tasks</a>
+        <a class="link navbar-brand" href="3.html">Schedule</a>
+        <a class="link navbar-brand" href="exams.html">Exams</a>
+       
+      </div>
+    </div>
+    <h1><br>Your Progress!<br><br><br></h1>
+    <div id="tasks-container"></div><br><br><br>
+    <button type="button" class="btn btn-secondary btn-lg" id="add-task-btn">Add New Task</button><br><br><br><br><br><br>
+    <div id="add-task-form">
+      <form id="task-form">
+        <div class="form-group">
+          <label for="task-title">Task Title:</label>
+          <input type="text" class="form-control" id="task-title" name="task-title" required>
+        </div>
+        <div class="form-group">
+          <label for="task-subject">Subject:</label>
+          <input type="text" class="form-control" id="task-subject" name="task-subject">
+        </div>
+        <div class="form-group">
+          <label for="task-priority">Priority:</label>
+          <select class="form-control" id="task-priority" name="task-priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="task-due-date">Due Date:</label>
+          <input type="date" class="form-control" id="task-due-date" name="task-due-date">
+        </div>
+        <div class="form-group">
+          <label for="task-progress">Progress (%):</label>
+          <input type="number" min="0" max="100" class="form-control" id="task-progress" name="task-progress">
+        </div>
+        <div class="form-group">
+          <label for="task-completion-time">Completion Time:</label>
+          <input type="text" class="form-control" id="task-completion-time" name="task-completion-time">
+        </div>
+        <button type="submit" class="btn btn-success">Save Task<br></button><br><br>
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="square-card" id="priority-square-card">
+          <h5>Priority</h5><br><br><br>
+          <div class="task-progress-container" id="priority-progress-bars"></div><br>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="square-card" id="due-date-square-card">
+          <h5>Due Date</h5><br><br><br>
+          <div class="task-progress-container" id="due-date-progress-bars"></div><br>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="square-card" id="completion-time-square-card">
+          <h5>Completion Time</h5><br><br><br>
+          <div class="task-progress-container" id="completion-time-progress-bars"></div><br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Initial tasks
+      let tasks = [
+        { title: 'Finish project report', subject: 'CS 423', priority: 'high', completed: false, progress: 70, dueDate: '2024-04-30', completionTime: '2 hours' },
+        { title: 'Study for math exam', subject: 'Math 101', priority: 'medium', completed: false, progress: 50, dueDate: '2024-05-15', completionTime: '3 hours' },
+        { title: 'CA prep', subject: 'COA', priority: 'low', completed: true, progress: 100, dueDate: '2024-04-20', completionTime: '1 hour' },
+        { title: 'MCQ practice', subject: 'INT 222', priority: 'low', completed: true, progress: 10, dueDate: '2024-04-25', completionTime: '30 minutes' },
+        { title: 'Codetantra', subject: 'Java', priority: 'high', completed: true, progress: 100, dueDate: '2024-04-18', completionTime: '2 hours' }
+      ];
+  
+      // Function to display tasks
+      function displayTasks(tasks) {
+        $('#tasks-container').empty(); // Clear existing tasks before display
+        tasks.forEach(function(task, index) {
+          const progress = task.completed ? 'Completed' : task.progress + '%';
+          const dueDate = task.dueDate ? `Due Date: ${task.dueDate}` : '';
+          const completionTime = task.completionTime ? `Completion Time: ${task.completionTime}` : '';
+  
+          const timeRemaining = calculateTimeRemaining(task.progress, task.dueDate);
+          const timeRemainingDisplay = task.progress < 100 ? `<div class="label">Time Remaining: ${timeRemaining}</div>` : '';
+  
+          const taskCard = `
+            <div class="task-card" data-index="${index}">
+              <h5 class="task-title">${task.title}</h5>
+              <div class="task-details">
+                <div class="label">Subject: ${task.subject}</div>
+                <div class="label">Priority: ${task.priority}</div>
+                <div class="label">Progress: ${progress}</div>
+                ${timeRemainingDisplay}
+                <div class="label">${dueDate}</div>
+                <div class="label">${completionTime}</div>
+              </div>
+              <br> <!-- Add space between lines -->
+              <div class="progress-bar">
+                <div class="progress-bar-filled" style="width: ${task.completed ? 100 : task.progress}%"></div>
+              </div>
+              <div class="progress-label">${progress}</div>
+              <button class="btn btn-success btn-sm mark-complete-btn">${task.completed ? 'Completed' : 'Mark as Complete'}</button>
+              <button class="btn btn-secondary btn-sm delete-task-btn">Delete</button>
+            </div>
+          `;
+          $('#tasks-container').append(taskCard);
+        });
+      }
+  
+      // Initial display of tasks
+      displayTasks(tasks);
+  
+      // Toggle add task form
+      $('#add-task-btn').click(function() {
+        $('#add-task-form').slideToggle();
+        $(this).toggleClass('active');
+      });
+  
+      // Add new task
+      $('#task-form').submit(function(event) {
+        event.preventDefault();
+        const title = $('#task-title').val();
+        const subject = $('#task-subject').val();
+        const priority = $('#task-priority').val();
+        const progress = parseInt($('#task-progress').val());
+        const dueDate = $('#task-due-date').val();
+        const completionTime = $('#task-completion-time').val();
+        tasks.push({ title, subject, priority, completed: false, progress, dueDate, completionTime });
+        displayTasks(tasks);
+        // Retain entered values in form fields
+        $('#task-title').val('');
+        $('#task-subject').val('');
+        $('#task-priority').val('low');
+        $('#task-due-date').val('');
+        $('#task-progress').val('');
+        $('#task-completion-time').val('');
+      });
+  
+      // Mark task as complete
+      $(document).on('click', '.mark-complete-btn', function() {
+        const index = $(this).closest('.task-card').data('index');
+        if (!tasks[index].completed) {
+          tasks[index].completed = true;
+          tasks[index].progress = 100;
+        } else {
+          tasks[index].completed = false;
+          tasks[index].progress = 0;
+        }
+        displayTasks(tasks);
+      });
+  
+      // Delete task
+      $(document).on('click', '.delete-task-btn', function() {
+        const index = $(this).closest('.task-card').data('index');
+        tasks.splice(index, 1);
+        displayTasks(tasks);
+      });
+  
+      // Function to calculate time remaining for partially completed tasks
+      function calculateTimeRemaining(progress, dueDate) {
+        if (progress < 100 && dueDate) {
+          const today = new Date();
+          const dueDateTime = new Date(dueDate);
+          const timeDiff = dueDateTime.getTime() - today.getTime();
+          const daysRemaining = Math.ceil(timeDiff / (1000 * 3600 * 24));
+          return `${daysRemaining} days`;
+        }
+        return '';
+      }
+
+      // Populate square cards
+      populateSquareCard(tasks, 'priority', '#priority-progress-bars');
+      populateSquareCard(tasks, 'dueDate', '#due-date-progress-bars');
+      populateSquareCard(tasks, 'completionTime', '#completion-time-progress-bars');
+
+      // Function to populate square cards with progress bars and task information
+      function populateSquareCard(tasks, sortBy, containerId) {
+        const sortedTasks = sortByCriteria(tasks, sortBy);
+
+        // Clear existing progress bars
+        $(containerId).empty();
+
+        // Iterate through tasks and add progress bars
+        sortedTasks.forEach(function(task) {
+          const progressBarHTML = `
+            <div class="progress-bar-square">
+              <div class="progress-bar-filled-square" style="width: ${task.progress}%;"></div>
+            </div>
+            <div class="task-details">
+              <div class="label">Task: ${task.title}</div>
+              <div class="label">Subject: ${task.subject}</div>
+              <div class="label">Due Date: ${task.dueDate}</div>
+              <div class="label">Completion Time: ${task.completionTime}</div>
+            </div>
+          `;
+          $(containerId).append(progressBarHTML);
+        });
+      }
+
+      // Function to sort tasks by priority, due date, or completion time
+      function sortByCriteria(tasks, sortBy) {
+        return tasks.slice().sort((a, b) => {
+          if (a[sortBy] < b[sortBy]) return -1;
+          if (a[sortBy] > b[sortBy]) return 1;
+          return 0;
+        });
+      }
+    });
+  </script>
+  
+</body>
+</html>

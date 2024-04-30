@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coffee Shop</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <style>
+    .box1{
+      width: 30%; /* Adjust width as needed */
+    height: 350px; /* Adjust height as needed */
+    background-color:wheat;
+   margin:40px;
+    border-radius: 25px;
+    width:25%;
+    color:black;
+    }
+    body {
+      background-image: url("three.jpg"); /* Replace with your background image path */
+      background-size: cover;
+      background-position: center;
+      height: 2000px; /* Set background to cover entire viewport height */
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    .container {
+      text-align: center;
+    /*  padding-top: 100px;  Adjust padding as needed */
+      color: #fff; /* White text for better visibility over background */
+    }
+
+    .card {
+      display: inline-block;
+      margin: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: 300px; /* Adjust card width as needed */
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Add subtle shadow */
+      transition: all 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      transform: scale(1.05); /* Add slight hover effect */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+    }
+
+    .card-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      line-height: 1.5;
+    }
+    .card1 {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      padding-top: 6px;
+      border: 1px solid white;
+      border-radius: 5px;
+      width: 900px; /* Adjust card width as needed */
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3); /* Add subtle shadow */
+      transition: all 0.1s ease-in-out;
+    }
+
+    .card1:hover {
+      transform: scale(1.05); /* Add slight hover effect */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+    }
+
+    .card1-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card1-text {
+      line-height: 1.5;
+    }
+    .link{
+      color:wheat ;
+
+         a:hover{  
+        color: whitesmoke;  
+         }  
+         
+    }
+    .ui-widgets {
+            position: relative;
+            display: inline-block;
+            width: 10rem;
+            padding: 8px;
+            height: 10rem;
+            border-radius: 9rem;
+            margin: 1.5rem;
+            border: 1.2rem solid rgb(151, 182, 179);
+            box-shadow: inset 0 0 7px grey;
+            border-left-color: wheat;
+            border-top-color: rgb(152, 163, 141);
+            border-right-color: rgb(213, 226, 187);
+            border-bottom-color: white;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .ui-widgets:nth-child(2) {
+            border-top-color: rgb(152, 163, 141);
+            border-right-color:rgb(213, 226, 187);
+            border-left-color: wheat;
+            border-bottom-color: white;
+        }
+        .ui-widgets .ui-values {
+            top: 40px;
+            position: absolute;
+           
+            right: 0;
+            font-weight: 700;
+            font-size: 2.0rem;
+ 
+        }
+        .ui-widgets .ui-labels {
+ 
+ left: 0;
+ bottom: -16px;
+ text-shadow: 0 0 4px grey;
+ color: black;
+ position: absolute;
+ width: 100%;
+ font-size: 16px;
+}
+.card {
+      display: inline-block;
+      margin: 15px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      width: 900px; /* Adjust card width as needed */
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Add subtle shadow */
+      transition: all 0.2s ease-in-out;
+    }
+
+    .card:hover {
+      transform: scale(1.05); /* Add slight hover effect */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+    }
+
+    .card-title {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      line-height: 1.5;
+    }
+    .card1 {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px;
+      margin-top: 5px;
+    
+      padding-top: 6px;
+      border: 1px solid white;
+      border-radius: 15px;
+     
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3); /* Add subtle shadow */
+      transition: all 0.1s ease-in-out;
+    }
+
+    .card1:hover {
+      transform: scale(1.05); /* Add slight hover effect */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+    }
+
+    .card1-title {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+
+    .card1-text {
+      line-height: 1.5;
+    }
+table {
+        width: 70%;
+        border-radius: 25px;
+        border-collapse: collapse;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+    }
+    th, td {
+        border: 1px solid #dee2e6;
+        padding: 20px;
+        text-align: center;
+        font-size: 16px;
+    }
+    th {
+        background-color: wheat;
+        color: #fff;
+        text-transform: uppercase;
+    }
+    td {
+        background-color: black;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+    }
+    .task-container {
+        position: relative;
+    }
+    .task-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-height: 100px;
+        overflow-y: auto;
+    }
+    .task-item {
+        padding: 5px;
+        border-bottom: 1px solid #dee2e6;
+        font-size: 14px;
+    }
+    .task-item:last-child {
+        border-bottom: none;
+    }
+    .past-date {
+        background-color: black;
+    }
+    .current-date {
+        background-color: wheat;
+        color: #fff;
+    }
+    .future-date {
+        background-color: black;
+    }
+    .task:hover {
+        background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="link row">
+      <div class="col-md-3">
+
+      </div>
+      <div class="col-md-6">
+        <div class=" navbar-header">
+       <br>
+          <a class="link navbar-brand" href="1.html">Home</a>
+  
+          <a class="link navbar-brand" href="tasks.html">Tasks</a>
+          <a class="link navbar-brand" href="3.html">Schedule</a>
+          <a class="link navbar-brand" href="exams.html">Exams</a>
+         
+  <br><br><br><br><br><br>
+  
+        </div>
+      </nav>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+
+        </div>
+        <div class="col-md-6">
+            
+            <h3>"Datamate: Where Every Date is a Schedule to Success!</h3><br><br><br>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        <table id="calendar">
+            <thead>
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Calendar cells will be dynamically generated here -->
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <br><br><br><br><br><br>
+
+
+    </div>
+    <p><a href="1.html"><button class="btn btn-secondary btn-lg">Explore More</button></a>  </p><br><br>
+    <div class="row"><br><br><br><br><br><br><br><br>
+      <div class="row">
+        <br><br><br>
+      </div>
+      <div class="box1">
+        
+          <br><h1>Think</h1>
+          <br><p> Taking the time to think before studying sets the stage for a more productive, focused, and successful learning experience. It allows you to approach your studies with intentionality and purpose, ultimately leading to better outcomes.
+
+            
+
+
+        
+       
+      </div>
+      <div class="box1">
+        
+          <br><h1>Plan</h1>
+          <BR><p>While planning provides structure, it also allows for flexibility. You can anticipate potential challenges or changes in your schedule and adjust your plan accordingly, ensuring that you can adaptability to unforeseen circumstances</p>
+       
+      </div>
+      <div class="box1"> 
+        <br><h1>Act</h1><br>
+        <p>Plans are only as good as their execution. Acting on your plans allows you to put your ideas into practice, turning abstract concepts into tangible results. It's through action that you bring your plans to life and make them meaningful.</p>
+      </div>
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-9">
+          <br><br><br><br><br>
+          <div class="card">
+            
+            <p class="card-text"> Stay ahead of your schedule, effortlessly manage your time, and conquer your goals with Datamate by your side. Experience the power of efficient planning and unlock your full potential with Datamate!""Step into the world of Datamate and unlock the gateway to streamlined success! Seamlessly navigate through your day with our intuitive calendar and scheduling feature. From organizing classes to managing assignments, every task becomes a breeze. With Datamate, your schedule isn't just a list of to-dos; it's a roadmap to achievement. Take control of your time, elevate your productivity, and let Datamate be your ultimate ally in the journey towards academic excellence!"</p>
+         </div>
+        </div>
+        </div>
+        <br><br>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarBody = document.querySelector('#calendar tbody');
+            var tasks = {};
+        
+            var today = new Date();
+            var currentMonth = today.getMonth();
+            var currentYear = today.getFullYear();
+            var currentDate = today.getDate();
+        
+            // Generate calendar cells
+            var daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            var startDay = new Date(currentYear, currentMonth, 1).getDay();
+            for (var i = 0; i < 5; i++) { // Assuming a 5-week month for simplicity
+                var row = calendarBody.insertRow();
+                for (var j = 0; j < 7; j++) {
+                    var cell = row.insertCell();
+                    var date = i * 7 + j + 1 - startDay;
+                    if (date > 0 && date <= daysInMonth) {
+                        cell.textContent = date;
+                        cell.dataset.date = date; // Store date information in dataset
+                        cell.classList.add('task');
+                        if (date < currentDate) {
+                            cell.classList.add('past-date');
+                        } else if (date === currentDate) {
+                            cell.classList.add('current-date');
+                        } else {
+                            cell.classList.add('future-date');
+                        }
+                        cell.innerHTML = `<div class="task-container">${date}<ul class="task-list"></ul></div>`;
+                    } else {
+                        cell.classList.add('past-date');
+                    }
+                }
+            }
+        
+            function handleCellClick(event) {
+                var date = event.target.dataset.date;
+                var title = prompt('Enter task:');
+                if (title) {
+                    var task = document.createElement('li');
+                    task.textContent = title;
+                    task.classList.add('task-item');
+                    tasks[date] = tasks[date] || [];
+                    tasks[date].push(task);
+                    event.target.querySelector('.task-list').appendChild(task);
+                }
+            }
+        
+            document.addEventListener('dblclick', function(event) {
+                if (event.target.classList.contains('task-item')) {
+                    var date = event.target.parentNode.parentNode.parentNode.dataset.date;
+                    var index = tasks[date].indexOf(event.target);
+                    tasks[date].splice(index, 1);
+                    event.target.remove();
+                }
+            });
+        
+            calendarBody.addEventListener('click', function(event) {
+                if (event.target.classList.contains('task')) {
+                    handleCellClick(event);
+                }
+            });
+        });
+        </script>
+        </body>
+        </html>
+        
